@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(rock,paper,scissors)
+        {
+            let randNum = Math.random() * 100 ;
+            if(randNum < 33.33)
+            {
+                return rock;
+            }
+            else if(randNum >= 33.33 && randNum < 66.66 )
+            {
+                return paper;
+            }
+            else
+            {
+                return scissors;
+            }
+        }
+    </script>
+</body>
+</html>
