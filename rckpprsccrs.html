@@ -7,22 +7,104 @@
 </head>
 <body>
     <script>
-        function getComputerChoice(rock,paper,scissors)
+        let humanScore = 0;
+        let computerScore = 0;
+        function getComputerChoice()
         {
             let randNum = Math.random() * 100 ;
             if(randNum < 33.33)
             {
-                return rock;
+                return "rock";
             }
-            else if(randNum >= 33.33 && randNum < 66.66 )
+            else if(randNum < 66.66 )
             {
-                return paper;
+                return "paper";
             }
             else
             {
-                return scissors;
+                return "scissors";
             }
         }
+
+        function getHumanChoice()
+        {
+            const humChoice="";
+            humChoice = prompt("What's your choice? (Rock Paper Scissors)");
+            return humChoice;
+        }
+
+        
+        function playRound(humanChoice,computerChoice)
+        {
+            let hc = humanChoice.toLowerCase();
+            let result = "";
+            
+            if(hc === "rock" && computerChoice === "paper")
+            {
+                computerScore = computerScore + 1;
+                result = "You lose! Paper beats Rock";
+            }
+            else if(hc === "rock" && computerChoice === "scissors")
+            {
+                humanScore = humanScore + 1;
+                result = "You win! Rock beats Scissors";
+            }
+            else if(hc === "paper" && computerChoice === "scissors")
+            {
+                computerScore = computerScore + 1;
+                result = "You lose! Scissors beats Paper";
+            }
+            else if(hc === "paper" && computerChoice === "rock")
+            {
+                humanScore = humanScore + 1;
+                result = "You win! Paper beats Rock";
+            }
+            else if(hc === "scissors" && computerChoice === "rock")
+            {
+                computerScore = computerScore + 1;
+                result = "You lose! Rock beats Scissors";
+            }
+            else if(hc === "scissors" && computerChoice === "paper")
+            {
+                humanScore = humanScore + 1;
+                result = "You win! Scissors beats Paper";
+            }
+            else
+            {
+                result ="Tie";
+            }
+
+            console.log(result);
+           
+        }
+
+        
+        function playGame()
+        {
+            for(let i = 1; i<=5 ; i++)
+            {
+                let h1=getHumanChoice();
+                playRound(h1,getComputerChoice());
+            }
+            console.log("Your result is:"+humanScore);
+            console.log("Computer score is:"+computerScore);
+            if(humanScore>computerScore)
+            {
+                return "You win! Congrats!";
+            }
+            else if(computerScore>humanScore)
+            {
+                return "Computer win! Try again!";
+            }
+            else
+            {
+                return "Tie";
+            }
+            
+        }
+
+        console.log(playGame());
+        
     </script>
 </body>
 </html>
